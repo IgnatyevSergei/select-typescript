@@ -1,0 +1,12 @@
+.selectedItems{
+    list-style: none;
+    border: 1px solid blue;
+    border-radius: 5px;
+    background: lightblue;
+    cursor: pointer;
+}
+
+.selectedItems:after{
+    content: '✖';
+    padding-left: 5px;
+}

@@ -1,0 +1,47 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.select {
+  width: 200px;
+  height: 40px;
+}
+
+.selected-items-list{
+  font-size: 18px;
+  width: 400px;
+  height: content-box;
+  display: flex;
+  column-gap: 40px;
+  row-gap: 5px;
+  flex-wrap: wrap;
+}
+
+.window-for-enter {
+  font-size: 20px;
+  padding-left: 5px;
+  padding-top: 3px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: lightgrey;
+  cursor: pointer;
+  user-select: none;
+}
+
+.window-for-enter:after{
+  content: '☑';
+  padding-left: 30px;
+}
+
+.list-items-block {
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
