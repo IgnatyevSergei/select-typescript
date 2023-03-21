@@ -8,7 +8,7 @@ const SelectedItems:FC = ():JSX.Element => {
   const { selectedItem } = useSelector((state:InitialStateType) => state);
   const dispatch = useDispatch();
 
-  const removeItem = (e:any) => {
+  const removeItem = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     dispatch(removeCarInCollectionAC(e));
   };
 

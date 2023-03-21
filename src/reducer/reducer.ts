@@ -4,14 +4,14 @@ import {
 } from "../actions/actions";
 
 export type ItemStateType = {
-  carBrand: string,
-  id: number
-}
+  carBrand: string;
+  id: number;
+};
 
 export type InitialStateType = {
-  listItem: Array<ItemStateType>,
-  selectedItem: Array<ItemStateType>
-}
+  listItem: Array<ItemStateType>;
+  selectedItem: Array<ItemStateType>;
+};
 
 const initialState: InitialStateType = {
   listItem: [
@@ -29,10 +29,13 @@ const initialState: InitialStateType = {
   selectedItem: [],
 };
 
-const addItem = (state:InitialStateType, e:any): InitialStateType => {
+const addItem = (
+  state: InitialStateType,
+  e: React.MouseEvent<HTMLLIElement, MouseEvent>
+): InitialStateType => {
+  const { id } = e.target as unknown as { id: string };
   const { listItem, selectedItem } = state;
-  const itemId = Number(e.target.id);
-  const index = listItem.findIndex(({ id }) => id === itemId);
+  const index = listItem.findIndex((item) => item.id === Number(id));
   const newCar = selectedItem.includes(listItem[index]);
   if (!newCar) {
     return {
@@ -46,10 +49,13 @@ const addItem = (state:InitialStateType, e:any): InitialStateType => {
   }
 };
 
-const removeCar = (state:InitialStateType, e:any): InitialStateType => {
+const removeCar = (
+  state: InitialStateType,
+  e: React.MouseEvent<HTMLLIElement, MouseEvent>
+): InitialStateType => {
+  const { id } = e.target as unknown as { id: string };
   const { selectedItem } = state;
-  const itemId = Number(e.target.id);
-  const newCollection = selectedItem.filter((item) => item.id !== itemId);
+  const newCollection = selectedItem.filter((item) => item.id !== Number(id));
   return {
     ...state,
     selectedItem: newCollection,
@@ -57,11 +63,14 @@ const removeCar = (state:InitialStateType, e:any): InitialStateType => {
 };
 
 type ActionType = {
-  type: string,
-  payload: any
-}
+  type: string;
+  payload: React.MouseEvent<HTMLLIElement, MouseEvent>;
+};
 
-export const reducer = (state:InitialStateType = initialState, action:ActionType) : InitialStateType => {
+export const reducer = (
+  state: InitialStateType = initialState,
+  action: ActionType
+): InitialStateType => {
   switch (action.type) {
     case ADD_CAR_IN_COLLECTION:
       return addItem(state, action.payload);
